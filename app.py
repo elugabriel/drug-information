@@ -14,8 +14,10 @@ class Drug(db.Model):
     name = db.Column(db.String(100))
     sickness = db.Column(db.String(100))
     trans_sickness = db.Column(db.String(100))
-    indication = db.Column(db.String(5000))
-    trans_indication = db.Column(db.String(5000))
+    dose = db.Column(db.String(5000))
+    trans_dose = db.Column(db.String(5000))
+    contraindication = db.Column(db.String(5000))
+    contra_contraindication = db.Column(db.String(5000))
     size = db.Column(db.Integer)
 
     def __repr__(self):
