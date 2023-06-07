@@ -37,8 +37,10 @@ def get_drug():
         drug = Drug.query.with_entities(Drug.name, 
                                     Drug.sickness,
                                     Drug.trans_sickness,
-                                    Drug.indication,
-                                    Drug.trans_indication,
+                                    Drug.dose,
+                                    Drug.trans_dose,
+                                    Drug.contraindication,
+                                    Drug.contra_contraindication,
                                     Drug.size).filter_by(trans_sickness= sickness_info, size= size_info).all()
         return render_template('index.html', drug = drug)
   
@@ -46,8 +48,10 @@ def get_drug():
         drug = Drug.query.with_entities(Drug.name, 
                                     Drug.sickness,
                                     Drug.trans_sickness,
-                                    Drug.indication,
-                                    Drug.trans_indication,
+                                    Drug.dose,
+                                    Drug.trans_dose,
+                                    Drug.contraindication,
+                                    Drug.contra_contraindication,
                                     Drug.size).filter_by(trans_sickness= sickness_info).all()
         return render_template('index.html', drug = drug)
   
