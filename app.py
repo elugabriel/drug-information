@@ -11,13 +11,11 @@ app.app_context().push()
 
 class Drug(db.Model):
     id = db.Column(db.Integer, primary_key = True)
-    name = db.Column(db.String(100))
-    sickness = db.Column(db.String(100))
-    trans_sickness = db.Column(db.String(100))
-    dose = db.Column(db.String(5000))
-    trans_dose = db.Column(db.String(5000))
-    contraindication = db.Column(db.String(5000))
-    contra_contraindication = db.Column(db.String(5000))
+    name = db.Column(db.String(10000))
+    indication = db.Column(db.String(10000))
+    trans_indication = db.Column(db.String(10000))
+    dose = db.Column(db.String(10000))
+    trans_dose = db.Column(db.String(10000))
     size = db.Column(db.Integer)
 
     def __repr__(self):
@@ -35,24 +33,20 @@ def get_drug():
 
     if request.form['sickness'] != '' and  request.form['size'] != '':
         drug = Drug.query.with_entities(Drug.name, 
-                                    Drug.sickness,
-                                    Drug.trans_sickness,
+                                    Drug.indication,
+                                    Drug.trans_indication,
                                     Drug.dose,
                                     Drug.trans_dose,
-                                    Drug.contraindication,
-                                    Drug.contra_contraindication,
-                                    Drug.size).filter_by(trans_sickness= sickness_info, size= size_info).all()
+                                    Drug.size).filter_by(trans_indication= sickness_info, size= size_info).all()
         return render_template('index.html', drug = drug)
   
     if request.form['sickness'] != '' and  request.form['size'] == '':
         drug = Drug.query.with_entities(Drug.name, 
-                                    Drug.sickness,
-                                    Drug.trans_sickness,
+                                    Drug.indication,
+                                    Drug.trans_indication,
                                     Drug.dose,
                                     Drug.trans_dose,
-                                    Drug.contraindication,
-                                    Drug.contra_contraindication,
-                                    Drug.size).filter_by(trans_sickness= sickness_info).all()
+                                    Drug.size).filter_by(trans_indication= sickness_info).all()
         return render_template('index.html', drug = drug)
   
     if request.form['sickness'] == '' and  request.form['size'] == '':
