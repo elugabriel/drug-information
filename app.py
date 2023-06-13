@@ -17,6 +17,7 @@ class Drug(db.Model):
     dose = db.Column(db.String(10000))
     trans_dose = db.Column(db.String(10000))
     size = db.Column(db.Integer)
+    key = db.Column(db.String(10000))
 
     def __repr__(self):
         return '<User %r>' % self.trans_indication
@@ -32,22 +33,22 @@ def get_drug():
    
 
     if request.form['sickness'] != '' and  request.form['size'] != '':
-        drug = Drug.query.with_entities(Drug.name, 
+        drugs = Drug.query.with_entities(Drug.name, 
                                     Drug.indication,
                                     Drug.trans_indication,
                                     Drug.dose,
                                     Drug.trans_dose,
-                                    Drug.size).filter_by(trans_indication= sickness_info, size= size_info).all()
-        return render_template('index.html', drug = drug)
+                                    Drug.size).filter_by(key= sickness_info, size= size_info).all()
+        return render_template('index.html', drugs = drugs)
   
     if request.form['sickness'] != '' and  request.form['size'] == '':
-        drug = Drug.query.with_entities(Drug.name, 
+        drugs = Drug.query.with_entities(Drug.name, 
                                     Drug.indication,
                                     Drug.trans_indication,
                                     Drug.dose,
                                     Drug.trans_dose,
-                                    Drug.size).filter_by(trans_indication= sickness_info).all()
-        return render_template('index.html', drug = drug)
+                                    Drug.size).filter_by(key= sickness_info).all()
+        return render_template('index.html', drugs = drugs)
   
     if request.form['sickness'] == '' and  request.form['size'] == '':
          

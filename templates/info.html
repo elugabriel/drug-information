@@ -1,50 +1,51 @@
 <div class="col-md-6">
-    <p class="lead">
+  <p class="lead">
       <h2 class="text-center">English</h2>
-      
-      {% for drug in drug %}
-    <div class=class="border-bottom row" style="margin-bottom: 16px; padding-bottom:8px;">
-        <h4 style="color:rgb(120, 120, 120); margin-bottom: 4px;"> 
-          {{drug["name"]}}
-      </h4>
-  
-      <div>
-          <b>Sickness: </b> {{ drug["sickness"]}} 
+
+      {% for drug in drugs %}
+      <div class="border-bottom row" style="margin-bottom: 16px; padding-bottom:8px;">
+          <h4 style="color:rgb(120, 120, 120); margin-bottom: 4px;">
+              Drug Name: {{ drug["name"] }}
+          </h4>
+
+          <div>
+              <b>Indication: </b> {{ drug["indication"] }}
+          </div>
+
+          <div>
+              <b>Size: </b> {{ drug["size"] }}
+          </div>
+
+          <div>
+              <b>Dose: </b> {{ drug["dose"] }} milligram
+          </div>
       </div>
-
-      <div>
-        <b>Indication: </b> {{ drug["indication"]}} 
-    </div>
-
-    <div>
-      <b>Size: </b> {{ drug["size"]}} milligram
-  </div>
-</div>
-    
-
       {% endfor %}
-    </p>
+  </p>
 </div>
+
 <div class="col-md-6">
   <p class="lead">
-    <h2 class="text-center">Yorùbá</h2>
-    
-    {% for drug in drug %}
-  <div class=class="border-bottom row" style="margin-bottom: 16px; padding-bottom:8px;">
-      <h4 style="color:rgb(120, 120, 120); margin-bottom: 4px;"> 
-        {{drug["name"]}}
-    </h4>
+      <h2 class="text-center">Yorùbá</h2>
 
-    <div>
-        <b>Aiṣán: </b> {{ drug["trans_sickness"]}} 
-    </div>
+      {% for drug in drugs %}
+      <div class="border-bottom row" style="margin-bottom: 16px; padding-bottom:8px;">
+          <h4 style="color:rgb(120, 120, 120); margin-bottom: 4px;">
+              Orúkọ Òògùn:  {{ drug["name"] }}
+          </h4>
 
-    <div>
-      <b>ìtọ́jú: </b> {{ drug["trans_indication"]}} 
-  </div>
+          <div>
+              <b>Ìtọ́kasí: </b> {{ drug["trans_indication"] }}
+          </div>
 
-  <div>
-    <b>Size: </b> {{ drug["size"]}} milligram
+          <div>
+              <b>Ìwọ̀n: </b> {{ drug["size"] }}
+          </div>
+
+          <div>
+              <b>Gbèdéke: </b> {{ drug["trans_dose"] }} 
+          </div>
+      </div>
+      {% endfor %}
+  </p>
 </div>
-</div>
-{% endfor %}
